@@ -1,0 +1,7 @@
+import sx.imports.core.Linea
+
+model {
+	Linea linea
+}
+
+json g.render(linea, [resolveTemplate: false])

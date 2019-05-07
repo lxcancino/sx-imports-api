@@ -1,0 +1,8 @@
+import sx.security.Role
+
+model {
+	Iterable<Role> roleList
+}
+
+json tmpl.role(roleList ?: [])
+

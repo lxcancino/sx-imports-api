@@ -1,0 +1,7 @@
+import sx.imports.core.Marca
+
+model {
+	Marca marca
+}
+
+json g.render(marca, [resolveTemplate: false])

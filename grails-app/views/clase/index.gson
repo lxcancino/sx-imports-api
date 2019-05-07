@@ -1,0 +1,8 @@
+import sx.imports.core.Clase
+
+model {
+	Iterable<Clase> claseList
+}
+
+json tmpl.clase(claseList ?: [])
+
