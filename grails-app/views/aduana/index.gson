@@ -1,0 +1,8 @@
+import sx.imports.embarques.Aduana
+
+model {
+	Iterable<Aduana> aduanaList
+}
+
+json tmpl.aduana(aduanaList ?: [])
+

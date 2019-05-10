@@ -76,7 +76,7 @@ dataSource:
 environments:
   development:
     dataSource:
-      dbCreate: none
+      dbCreate: update
       url: jdbc:mysql://localhost/sx_imports?autoReconnect=true
       #url: jdbc:mysql://${JDBC_CONNECTION_STRING}?autoReconnect=true
       username: root
@@ -141,12 +141,6 @@ environments:
   certificacion:
     server:
       port: 9750
-  paperx:
-    server:
-      port: 9740
-  impapx:
-    server:
-      port: 9720
 ---
 grails:
     cors:

@@ -1,0 +1,7 @@
+import sx.imports.core.Proveedor
+
+model {
+	Proveedor proveedor
+}
+
+json g.render(proveedor, [resolveTemplate: false])

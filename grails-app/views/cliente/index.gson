@@ -1,0 +1,8 @@
+import sx.imports.core.Cliente
+
+model {
+	Iterable<Cliente> clienteList
+}
+
+json tmpl.cliente(clienteList ?: [])
+

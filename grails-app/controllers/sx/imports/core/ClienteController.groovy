@@ -3,22 +3,22 @@ package sx.imports.core
 import groovy.util.logging.Slf4j
 
 import grails.compiler.GrailsCompileStatic
-import grails.rest.RestfulController
+import grails.rest.*
 
 import grails.plugin.springsecurity.annotation.Secured
 
+@Slf4j
 @GrailsCompileStatic
 @Secured("permitAll")
-@Slf4j
-class ProductoController extends RestfulController {
+class ClienteController extends RestfulController<Cliente> {
     static responseFormats = ['json']
-    ProductoController() {
-        super(Producto)
+    ClienteController() {
+        super(Cliente)
     }
 
     @Override
-    protected List listAllResources(Map params) {
-        params.max = 5000
-        return Producto.list(params)
+    protected List<Cliente> listAllResources(Map params) {
+        params.max = 100
+        return Cliente.list(params)
     }
 }

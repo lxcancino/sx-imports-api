@@ -1,0 +1,8 @@
+import sx.imports.core.Proveedor
+
+model {
+	Iterable<Proveedor> proveedorList
+}
+
+json tmpl.proveedor(proveedorList ?: [])
+
