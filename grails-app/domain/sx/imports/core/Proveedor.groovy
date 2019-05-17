@@ -54,6 +54,8 @@ class Proveedor {
     String createUser
     String updateUser
 
+    Long swx
+
     static embedded = ['direccion']
 
     static hasMany = [productos:ProveedorProducto, agentes:String]

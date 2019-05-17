@@ -3,6 +3,7 @@ package sx.imports.integracion
 import groovy.sql.Sql
 import sx.imports.core.Cliente
 import sx.imports.core.Direccion
+import sx.imports.core.Empresa
 import sx.imports.core.Producto
 import sx.imports.core.Proveedor
 import sx.imports.core.ProveedorProducto
@@ -92,7 +93,12 @@ class ImportadorDeCatalogos implements IntegracionDBSupport {
         Clase c = Clase.where{nombre == 'SIN ASIGNAR'}.find()
         rows.each { row ->
 
-            Producto producto = Producto.findOrCreateWhere(clave: row.clave)
+            // Producto producto = Producto.findOrCreateWhere(swx: row.id.toString())
+            Producto producto = Producto.where{clave  == row.clave}.find()
+            if(producto == null) {
+                producto = new Producto(swx: row.id.toString())
+            }
+            producto.clave = row.clave
             producto.properties = row
             Linea linea = Linea.where{nombre == row.nlinea}.find()
             Marca marca = Marca.where{nombre == row.nmarca}.find()
@@ -163,7 +169,9 @@ class ImportadorDeCatalogos implements IntegracionDBSupport {
         """
         List<Map> rows = readFromPaper(sql)
         rows.each { row ->
-            Proveedor p = Proveedor.findOrCreateWhere(rfc: row.rfc, nombre: row.nombre)
+            Proveedor p = Proveedor.findOrCreateWhere(swx: row.id)
+            p.rfc = row.rfc
+            p.nombre = row.nombre
             p.subCuentaOperativa = row.sub_cuenta_operativa
             p.email = row.correo_electronico
             p.www = row.www
@@ -215,7 +223,7 @@ class ImportadorDeCatalogos implements IntegracionDBSupport {
     def importarAduanas() {
         String sql = "select * from aduana"
         List<Map> rows = readFromPaper(sql)
-        rows.each {
+        rows.each { row ->
             Aduana a = Aduana.findOrCreateWhere(nombre: row.nombre)
             Direccion direccion = new Direccion()
             direccion.calle = row.direccion_calle
@@ -227,7 +235,42 @@ class ImportadorDeCatalogos implements IntegracionDBSupport {
             direccion.pais = row.direccion_pais
             direccion.codigoPostal = row.direccion_codigo_postal
             a.direccion = direccion
+            a.origen = row.id
             a.save failOnError: true, flush: true
         }
+    }
+
+    def importarEmpresas() {
+        List<Map> rows = []
+        rows.addAll(readFromPaper("select * from empresa"))
+        rows.addAll(readFromImpap("select * from empresa"))
+        rows.each { row ->
+            String cve = row.nombre.startsWith('PAPER') ? 'PAPER': 'IMPAP'
+            Empresa empresa = Empresa.findOrCreateWhere(clave: cve, nombre: row.nombre)
+            empresa.rfc = row.rfc
+            empresa.regimen = row.regimen
+            empresa.certificadoDigital = row.certificado_digital
+            empresa.certificadoDigitalPfx = row.certificado_digital_pfx
+            empresa.llavePrivada = row.llave_privada
+            empresa.numeroDeCertificado = row.numero_de_certificado
+            empresa.passwordPfx = row.password_pfx
+            empresa.regimenClaveSat = row.regimen_clave_sat
+            empresa.versionDeCfdi = row.version_de_cfdi
+
+            Direccion direccion = new Direccion()
+            direccion.calle = row.direccion_calle
+            direccion.numeroInterior = row.direccion_numero_interior
+            direccion.numeroExterior = row.direccion_numero_exterior
+            direccion.colonia = row.direccion_colonia
+            direccion.municipio = row.direccion_municipio
+            direccion.estado = row.direccion_estado
+            direccion.pais = row.direccion_pais
+            direccion.codigoPostal = row.direccion_codigo_postal
+            empresa.direccion = direccion
+
+            empresa.save failOnError: true, flush: true
+        }
+
+
     }
 }

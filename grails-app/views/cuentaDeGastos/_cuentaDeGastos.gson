@@ -1,0 +1,7 @@
+import sx.imports.embarques.CuentaDeGastos
+
+model {
+	CuentaDeGastos cuentaDeGastos
+}
+
+json g.render(cuentaDeGastos, [resolveTemplate: false])

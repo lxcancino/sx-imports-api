@@ -1,0 +1,8 @@
+import sx.imports.embarques.CuentaDeGastos
+
+model {
+	Iterable<CuentaDeGastos> cuentaDeGastosList
+}
+
+json tmpl.cuentaDeGastos(cuentaDeGastosList ?: [])
+

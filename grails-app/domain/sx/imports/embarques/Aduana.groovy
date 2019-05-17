@@ -1,14 +1,13 @@
 package sx.imports.embarques
 
 import grails.compiler.GrailsCompileStatic
-import grails.plugin.springsecurity.annotation.Secured
-import grails.rest.Resource
+
 import groovy.transform.EqualsAndHashCode
+
 import sx.imports.core.Direccion
 
-@Resource(readOnly = false, formats = ['json'], uri = "/api/aduanas")
+
 @GrailsCompileStatic
-@Secured("IS_AUTHENTICATED_ANONYMOUSLY")
 @EqualsAndHashCode(includes='nombre')
 class Aduana {
 
@@ -16,13 +15,20 @@ class Aduana {
 
     Direccion direccion
 
+    /**
+     * Id en la version anterior del sistema
+     *
+     */
+    Long origen
+
     static embedded =['direccion']
 
     static constraints = {
-        nombre(blank:false,unique:true,maxSize:50)
+        nombre unique:true
+        origen nullable: true
     }
 
     String toString(){
-        return nombre;
+        return nombre
     }
 }

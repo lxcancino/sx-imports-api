@@ -1,0 +1,8 @@
+import sx.imports.embarques.DistribucionDet
+
+model {
+	Iterable<DistribucionDet> distribucionDetList
+}
+
+json tmpl.distribucionDet(distribucionDetList ?: [])
+

@@ -1,0 +1,8 @@
+import sx.imports.embarques.Pedimento
+
+model {
+	Iterable<Pedimento> pedimentoList
+}
+
+json tmpl.pedimento(pedimentoList ?: [])
+

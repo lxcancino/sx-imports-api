@@ -1,0 +1,7 @@
+import sx.imports.embarques.Compra
+
+model {
+	Compra compra
+}
+
+json g.render(compra, [resolveTemplate: false])

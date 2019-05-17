@@ -1,0 +1,7 @@
+import sx.cfdi.CfdiCancelado
+
+model {
+	CfdiCancelado cfdiCancelado
+}
+
+json g.render(cfdiCancelado, [resolveTemplate: false])

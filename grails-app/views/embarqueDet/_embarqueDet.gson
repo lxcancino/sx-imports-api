@@ -1,0 +1,7 @@
+import sx.imports.embarques.EmbarqueDet
+
+model {
+	EmbarqueDet embarqueDet
+}
+
+json g.render(embarqueDet, [resolveTemplate: false])

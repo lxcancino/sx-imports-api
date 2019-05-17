@@ -4,6 +4,9 @@ grails:
   codegen:
     defaultPackage: sx.imports
   gorm:
+    multiTenancy:
+      mode: DISCRIMINATOR
+      tenantResolverClass: sx.imports.core.EmpresaTenantResolver
     reactor:
       # Whether to translate GORM events into Reactor events
       # Disabled by default for performance reasons

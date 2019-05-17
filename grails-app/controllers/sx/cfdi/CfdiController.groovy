@@ -1,23 +1,23 @@
-package sx.imports.embarques
+package sx.cfdi
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
-import grails.rest.RestfulController
+import grails.rest.*
 
 import groovy.util.logging.Slf4j
 
-@Slf4j
 @GrailsCompileStatic
 @Secured("permitAll")
-class AduanaController extends RestfulController<Aduana> {
+@Slf4j
+class CfdiController extends RestfulController<Cfdi> {
     static responseFormats = ['json']
-    AduanaController() {
-        super(Aduana)
+
+    CfdiController() {
+        super(Cfdi)
     }
 
     @Override
-    protected List<Aduana> listAllResources(Map params) {
-        params.max = 100
+    protected List<Cfdi> listAllResources(Map params) {
         return super.listAllResources(params)
     }
 }

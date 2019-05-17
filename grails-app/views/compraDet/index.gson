@@ -1,0 +1,8 @@
+import sx.imports.embarques.CompraDet
+
+model {
+	Iterable<CompraDet> compraDetList
+}
+
+json tmpl.compraDet(compraDetList ?: [])
+

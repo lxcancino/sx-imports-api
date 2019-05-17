@@ -1,0 +1,7 @@
+import sx.imports.core.Empresa
+
+model {
+	Empresa empresa
+}
+
+json g.render(empresa, [includes: ['nombre','rfc'], resolveTemplate: false])

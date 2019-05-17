@@ -1,0 +1,8 @@
+import sx.imports.core.Empresa
+
+model {
+	Iterable<Empresa> empresaList
+}
+
+json tmpl.empresa(empresaList ?: [])
+

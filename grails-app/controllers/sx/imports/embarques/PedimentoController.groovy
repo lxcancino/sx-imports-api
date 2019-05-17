@@ -6,18 +6,18 @@ import grails.rest.RestfulController
 
 import groovy.util.logging.Slf4j
 
-@Slf4j
 @GrailsCompileStatic
-@Secured("permitAll")
-class AduanaController extends RestfulController<Aduana> {
+@Secured(['ROLE_COMPRAS', 'ROLE_ADMIN'])
+@Slf4j
+class PedimentoController extends RestfulController<Pedimento> {
     static responseFormats = ['json']
-    AduanaController() {
-        super(Aduana)
+
+    PedimentoController() {
+        super(Pedimento)
     }
 
     @Override
-    protected List<Aduana> listAllResources(Map params) {
-        params.max = 100
+    protected List<Pedimento> listAllResources(Map params) {
         return super.listAllResources(params)
     }
 }

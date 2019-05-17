@@ -1,0 +1,8 @@
+import sx.imports.embarques.Embarque
+
+model {
+	Iterable<Embarque> embarqueList
+}
+
+json tmpl.embarque(embarqueList ?: [])
+

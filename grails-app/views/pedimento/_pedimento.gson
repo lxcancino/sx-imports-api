@@ -1,0 +1,7 @@
+import sx.imports.embarques.Pedimento
+
+model {
+	Pedimento pedimento
+}
+
+json g.render(pedimento, [resolveTemplate: false])

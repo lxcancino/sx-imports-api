@@ -1,0 +1,7 @@
+import sx.imports.embarques.DistribucionDet
+
+model {
+	DistribucionDet distribucionDet
+}
+
+json g.render(distribucionDet, [resolveTemplate: false])

@@ -1,0 +1,9 @@
+import sx.imports.embarques.Embarque
+
+model {
+	Embarque embarque
+}
+
+json g.render(embarque, [resolveTemplate: false]){
+	aduanaNombre embarque?.aduana?.nombre
+}
