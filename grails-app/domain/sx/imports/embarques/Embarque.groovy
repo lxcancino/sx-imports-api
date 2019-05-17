@@ -70,8 +70,6 @@ class Embarque implements  MultiTenant<Compra> {
         id generator: 'uuid'
         tenantId name: 'empresa'
         partidas cascade: "all-delete-orphan"
-        proveedor fetch:'join'
-        aduana fetch:'join'
         fecha type: 'date', index: 'EMBARQUE_IDX_FECHA'
         ingresoAduana type: 'date'
         liberado type: 'date'

@@ -32,6 +32,9 @@ class UrlMappings {
         "/api/cfdi"(resources: 'cfdi', excludes: ["create", "edit", "patch"])
         "/api/cfdiCancelado"(resources: 'cfdi', excludes: ["create", "edit", "patch"])
 
+        "/api/cuentasPorPagar"(resources: 'cuentaPorPagar', excludes: ["create", "edit", "patch"])
+        "/api/comprobanteFiscal"(resources: 'comprobanteFiscal', excludes: ["create", "edit", "patch"])
+
         "500"(view: '/error')
         "404"(view: '/notFound')
     }
