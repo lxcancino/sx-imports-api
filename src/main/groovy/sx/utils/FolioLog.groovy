@@ -1,5 +1,6 @@
 package sx.utils
 
+import grails.gorm.multitenancy.CurrentTenant
 import sx.imports.core.Folio
 
 trait FolioLog {

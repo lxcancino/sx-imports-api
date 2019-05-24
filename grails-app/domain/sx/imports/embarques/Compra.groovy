@@ -33,9 +33,9 @@ class Compra implements  MultiTenant<Compra> {
 
     String comentario
 
-    String moneda = 'MXN'
+    String moneda
 
-    BigDecimal tipoDeCambio = 1
+    BigDecimal tipoDeCambio
 
     BigDecimal importe = 0.0
 

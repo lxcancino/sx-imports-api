@@ -16,7 +16,7 @@ class UrlMappings {
 
         // Proveedores
         "/api/proveedores"(resources: 'proveedor', excludes: ["create", "edit","patch"]){
-            "productos"(resources: 'proveedorProducto', excludes: ["create", "edit","patch"])
+            "/productos"(resources: 'proveedorProducto', excludes: ["create", "edit","patch"])
         }
         "/api/aduanas"(resources: 'aduana', excludes: ["create", "edit", "patch"])
 
@@ -26,7 +26,7 @@ class UrlMappings {
         "/api/pedimentos"(resources: 'embarque', excludes: ["create", "edit", "patch"])
         "/api/cuentasDeGasto"(resources: 'cuentaDeGastos', excludes: ["create", "edit", "patch"])
         "/api/distribuciones"(resources: 'distribucion', excludes: ["create","edit", "patch"]){
-            "partidas"(resources: 'distribucionDet',excludes: ["create", "edit", "patch"])
+            "/partidas"(resources: 'distribucionDet',excludes: ["create", "edit", "patch"])
         }
 
         "/api/cfdi"(resources: 'cfdi', excludes: ["create", "edit", "patch"])

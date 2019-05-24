@@ -57,10 +57,18 @@ class Producto {
 
     String swx
 
+    BigDecimal factor = 1000
+
     static constraints = {
         clave unique:true
         acabado nullable:true
         color nullable:true
         swx nullable: true
+    }
+
+    static transients = ['factor']
+
+    BigDecimal getFactor() {
+        return this.unidad.startsWith('MIL') ? 1000.00 : 1.00
     }
 }

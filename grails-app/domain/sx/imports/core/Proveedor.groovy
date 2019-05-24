@@ -44,7 +44,7 @@ class Proveedor {
 
     Boolean agenciaAduanal = false
 
-    String tipo
+    String tipo = 'COMPRAS'
 
     Set<ProveedorProducto> productos
 

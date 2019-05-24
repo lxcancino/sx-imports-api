@@ -4,4 +4,6 @@ model {
 	Compra compra
 }
 
-json g.render(compra, [resolveTemplate: false])
+json g.render(compra, [excludes: ['proveedor'], resolveTemplate: false]) {
+	proveedor g.render(compra.proveedor, [excludes: ["productos"]])
+}

@@ -220,6 +220,45 @@ class ImportadorDeCatalogos implements IntegracionDBSupport {
 
     }
 
+    def importarProductosProveedor() {
+        def provs = readFromPaper("select distinct proveedor_id from proveedor_producto")
+        provs.each {
+            Long id = it.proveedor_id.toLong()
+            Proveedor p = Proveedor.where{swx == id}.find()
+            p.productos.clear()
+
+            List<Map> rows = readFromPaper("select * from proveedor_producto p where p.proveedor_id = ?", id)
+            println "Importando productos para ${p.nombre} Productos: ${rows.size()}"
+            rows.each { row ->
+                ProveedorProducto pp = new ProveedorProducto()
+                Producto producto = Producto.where{swx == row.producto_id}.find()
+                if(producto != null) {
+                    pp.producto = producto
+                    pp.clave = producto.clave
+                    pp.descripcion = producto.descripcion
+                    pp.gramos = row.gramos
+                    pp.codigo = row.codigo
+                    pp.costoUnitario = row.costo_unitario
+                    p.addToProductos(pp)
+                    p.save failOnError: true, flush: true
+                } else {
+                    println 'No existe el producto swx: ' + row.producto_id
+                }
+
+            }
+        }
+        /*
+        List<Proveedor> proveedores = Proveedor.list()
+        proveedores.each { prov ->
+            List<Map> rows = readFromPaper("select * from proveedor_producto p where p.proveedor_id = ?", prov.swx)
+            if(rows) {
+                println "Imprtando productos para ${prov.swx} Productos: ${rows.size()}"
+            }
+
+        }
+        */
+    }
+
     def importarAduanas() {
         String sql = "select * from aduana"
         List<Map> rows = readFromPaper(sql)

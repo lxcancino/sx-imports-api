@@ -18,7 +18,7 @@ class Folio implements  MultiTenant<Folio> {
 
     String serie
 
-    String folio
+    Long folio = 0
 
     static constraints = {
         entidad maxSize:30
