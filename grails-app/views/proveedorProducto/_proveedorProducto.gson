@@ -6,4 +6,5 @@ model {
 
 json g.render(proveedorProducto, [resolveTemplate: false]) {
 	factor proveedorProducto.producto.factor
+    unidad proveedorProducto.producto.unidad
 }

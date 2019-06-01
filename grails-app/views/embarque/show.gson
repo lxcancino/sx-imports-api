@@ -4,4 +4,7 @@ model {
 	Embarque embarque
 }
 
-json tmpl.embarque(embarque)
+json g.render(embarque, [excludes: ['proveedor'], resolveTemplate: false]){
+	aduanaNombre embarque?.aduana?.nombre
+	proveedor g.render(embarque.proveedor, [excludes: ['productos', 'direccion'] ])
+}

@@ -35,9 +35,9 @@ class Embarque implements  MultiTenant<Compra> {
 
     String comentario
 
-    String moneda
+    String moneda = 'MXN'
 
-    BigDecimal tipoDeCambio
+    BigDecimal tipoDeCambio = 1.0
 
     Date liberado
 
