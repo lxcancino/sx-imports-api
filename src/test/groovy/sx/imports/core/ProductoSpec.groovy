@@ -1,18 +1,15 @@
 package sx.imports.core
 
-import grails.testing.gorm.DomainUnitTest
+
+import grails.buildtestdata.BuildDomainTest
 import spock.lang.Specification
 
-class ProductoSpec extends Specification implements DomainUnitTest<Producto> {
+class ProductoSpec extends Specification implements BuildDomainTest<Producto> {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "build a valid producto"() {
+        expect:
+        domain.linea
+        domain.marca
+        println domain
     }
 }

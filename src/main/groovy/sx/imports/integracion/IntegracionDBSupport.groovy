@@ -9,8 +9,8 @@ import java.sql.SQLException
 @Slf4j
 trait IntegracionDBSupport {
 
-    static String PAPER = 'jdbc:mysql://10.10.1.228/paperx2'
-    static String IMPAP = 'jdbc:mysql://10.10.1.228/impapx2'
+    static String PAPER = 'jdbc:mysql://localhost/paperx2'
+    static String IMPAP = 'jdbc:mysql://localhost/impapx2'
 
     List<Map> readFromImpap(String sql, ...params) {
         return this.getRows(IMPAP, sql, params)
