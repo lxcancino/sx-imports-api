@@ -21,7 +21,8 @@ class EmbarqueService implements LogUser, FolioLog{
     Embarque save( Embarque embarque) {
         logEntity(embarque)
         if(embarque.id == null) {
-            embarque.folio = nextFolio('EMBARQUE')
+
+            embarque.folio = nextFolio('Embarque', 'EMBARQUES')
         }
         embarque.save failOnError: true, flush: true
         return embarque
